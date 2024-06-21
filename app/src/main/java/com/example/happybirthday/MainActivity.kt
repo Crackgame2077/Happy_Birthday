@@ -23,7 +23,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +40,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     GreetingImage(
-                        message = "Happy Birthday Sam!",
-                        from = "From Emma"
+                        message = stringResource(R.string.happy_birthday_mom),
+                        from = stringResource(R.string.signature_text)
                     )
 
                 }
@@ -62,12 +66,14 @@ fun GreetingText(modifier: Modifier = Modifier, message: String, from: String) {
         )
         Row( // Introduce a Row for horizontal alignment
             modifier = Modifier.fillMaxWidth(), // Make the Row take full width
-            horizontalArrangement = Arrangement.End // Align content to the end
+            horizontalArrangement = Arrangement. // Align content to the end
         ) {
             Text(
                 text = from,
                 fontSize = 36.sp,
-                modifier = Modifier.padding(16.dp) // Keep the padding
+                modifier = Modifier
+                    .padding(16.dp)
+                    .background(Color.Yellow)
             )
         }
     }
@@ -80,7 +86,9 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier){
         Image(
             painter = image,
             contentDescription = null,
-            modifier = modifier.fillMaxSize()
+            modifier = modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+            alpha = 0.5F
         )
         GreetingText(
             message = message,
