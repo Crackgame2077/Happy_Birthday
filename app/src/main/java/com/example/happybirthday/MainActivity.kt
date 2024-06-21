@@ -66,7 +66,7 @@ fun GreetingText(modifier: Modifier = Modifier, message: String, from: String) {
         )
         Row( // Introduce a Row for horizontal alignment
             modifier = Modifier.fillMaxWidth(), // Make the Row take full width
-            horizontalArrangement = Arrangement. // Align content to the end
+            horizontalArrangement = Arrangement.Center // Align content to the end
         ) {
             Text(
                 text = from,
